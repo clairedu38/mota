@@ -65,9 +65,10 @@ h4 {
   font-weight: regular;
 }
 
-p, h4 {
+p {
   font-size: 14px;
-  font-weight: lighter;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
 }
 
 @media (max-width: 700px) {
@@ -212,4 +213,67 @@ footer .footer-menu li {
     gap: 24px;
     padding: 43px 0;
   }
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+  justify-content: center;
+  align-items: center;
+}
+.modal .modal-content {
+  overflow: hidden;
+  width: 490px;
+  top: 15%;
+  left: 50%;
+  background-color: white;
+  border: 5px solid black;
+  padding: 0;
+}
+.modal .modal-content h2 {
+  display: none;
+}
+.modal .modal-content img {
+  width: 100%;
+  height: auto;
+  margin-top: 3%;
+}
+.modal .modal-content form {
+  z-index: 0;
+}
+.modal .modal-content form .contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: 5% 25%;
+}
+.modal .modal-content form .contact-form p {
+  margin: 10px 0;
+}
+.modal .modal-content form .contact-form .form {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  text-align: left;
+  text-transform: uppercase;
+}
+.modal .modal-content form .contact-form input, .modal .modal-content form .contact-form textarea {
+  border-radius: 8px;
+  border: 1px solid var(--medium-grey);
+  width: 100%;
+}
+.modal .modal-content form .contact-form .wpcf7-email, .modal .modal-content form .contact-form .wpcf7-text {
+  height: 30px;
+}
+.modal .modal-content form .contact-form .btn-submit {
+  border-radius: 2px;
+  background-color: var(--medium-grey);
+  color: black;
+  height: 50px;
 }/*# sourceMappingURL=style.css.map */

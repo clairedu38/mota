@@ -1,3 +1,5 @@
+<?php get_template_part( 'template-parts/contact' ); ?>
+
 <footer>
     <?php
         wp_nav_menu(array(
