@@ -30,6 +30,7 @@ body .main-container {
   max-width: 1440px;
   margin: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 a {
@@ -48,6 +49,9 @@ h1, h2 {
 h1 {
   font-size: 96px;
   font-weight: bold;
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(255, 255, 255);
+  text-align: center;
 }
 
 h2 {
@@ -71,6 +75,17 @@ p {
   font-weight: 300;
 }
 
+.btn-submit {
+  border-radius: 2px;
+  background-color: var(--medium-grey);
+  color: black;
+  height: 50px;
+  font-size: 12px;
+}
+.btn-submit:hover {
+  cursor: pointer;
+}
+
 @media (max-width: 700px) {
   h1 {
     font-size: 27.6px;
@@ -86,6 +101,7 @@ header {
   align-items: center;
   margin: 0 auto;
   padding: 0 146px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
 }
 header .logo-header {
   height: 80px;
@@ -271,9 +287,101 @@ footer .footer-menu li {
 .modal .modal-content form .contact-form .wpcf7-email, .modal .modal-content form .contact-form .wpcf7-text {
   height: 30px;
 }
-.modal .modal-content form .contact-form .btn-submit {
-  border-radius: 2px;
-  background-color: var(--medium-grey);
-  color: black;
-  height: 50px;
+
+.infos-photo {
+  display: flex;
+  flex-direction: column;
+}
+.infos-photo .photo {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+.infos-photo .photo > div {
+  width: 50%;
+  height: auto;
+}
+.infos-photo .photo > div img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.infos-photo .photo .description-photo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.infos-photo .photo .description-photo > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-bottom: 1px solid black;
+  padding: 30px 0;
+  margin-right: 30px;
+}
+.infos-photo .photo .description-photo h2 {
+  margin-bottom: 20px;
+  line-height: 1;
+}
+.infos-photo .photo .description-photo h4 {
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+.infos-photo .contact-photo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 34px 0;
+  border-bottom: 1px solid black;
+}
+.infos-photo .contact-photo > div {
+  display: flex;
+  flex-direction: row;
+}
+.infos-photo .contact-photo .btn-submit {
+  width: 272px;
+  margin-left: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1440px) {
+  .infos-photo {
+    padding: 30px;
+  }
+}
+@media (max-width: 700px) {
+  .infos-photo .photo {
+    flex-direction: column;
+  }
+  .infos-photo .photo > div {
+    width: 100%;
+  }
+  .infos-photo .contact-photo {
+    flex-direction: column;
+  }
+  .infos-photo .contact-photo .btn-submit {
+    margin-left: 0;
+  }
+}
+.banner-home {
+  width: 100%;
+  position: relative;
+  height: 80vh;
+}
+.banner-home img {
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.banner-home h1 {
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -100%);
 }/*# sourceMappingURL=style.css.map */

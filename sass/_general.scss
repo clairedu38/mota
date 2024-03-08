@@ -11,6 +11,7 @@
 // BREAKPOINT MEDIA QUERY
 
 $breakpoint__large_phone: 700px;
+$breakpoint__desktop: 1440px;
 
 @font-face {
     font-family: 'Space Mono';
@@ -43,6 +44,7 @@ body {
         max-width: 1440px;
         margin: 0;
         box-sizing: border-box;
+        overflow: hidden;        
     }
 }
 
@@ -62,6 +64,9 @@ h1, h2 {
 h1 {
     font-size: 96px ;
     font-weight: bold;
+    color: transparent;
+    -webkit-text-stroke: 2px rgb(255, 255, 255);
+    text-align: center;
 }
 
 h2 {
@@ -85,7 +90,17 @@ p {
     font-weight: 300;
 }
 
+.btn-submit {
+    border-radius: 2px;
+    background-color: var(--medium-grey);
+    color: black;
+    height: 50px;
+    font-size: 12px;
 
+    &:hover {
+        cursor: pointer;
+    }
+}
 
 @media (max-width: $breakpoint__large_phone) {
 
