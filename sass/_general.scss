@@ -30,7 +30,7 @@ body {
 }
 
 section {
-    padding: 30px;
+    padding: 30px 10%;
 }
 
 a {
@@ -75,6 +75,10 @@ p {
     font-weight: 300;
 }
 
+li {
+    text-transform: uppercase;
+}
+
 .btn-submit {
     border-radius: 2px;
     background-color: var(--medium-grey);
@@ -86,6 +90,10 @@ p {
     &:hover {
         cursor: pointer;
     }
+}
+
+.content {
+    margin-top: 80px;
 }
 
 @media (max-width: $breakpoint__large_phone) {

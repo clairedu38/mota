@@ -19,10 +19,14 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // When the user clicks anywhere outside of the modal, close it
+    // fermeture de la modale quand on clique en dehors
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
+});
+
+jQuery(document).ready(function($){
+    $("#reference-photo").val($('#reference-text').text());
 });

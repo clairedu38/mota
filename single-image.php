@@ -10,7 +10,9 @@ $args = array(
     'p' => $post_id, // Récupérer la publication par son ID
     'post_type' => 'image', // Type de publication personnalisé
     'post_status' => 'publish', // Publications publiées uniquement
-    'posts_per_page' => 1 
+    'posts_per_page' => 1 ,
+    'orderby' => 'date', // Tri par date
+    'order' => 'DESC' // Ordre décroissant 
 );
 
 $image_query = new WP_Query($args);
@@ -48,7 +50,7 @@ if ($image_query->have_posts()) {
             <div class="description-photo">
                 <div>
                     <h2><?php echo esc_html($titre); ?></h2>
-                    <h4>Référence : <?php echo esc_html($reference); ?></h4>
+                    <h4>Référence : <span id="reference-text"><?php echo esc_html($reference); ?></span></h4>
                     <h4>Catégorie : <?php echo esc_html($categorie); ?></h4>
                     <h4>Format : <?php echo esc_html($format); ?></h4>
                     <h4>Type : <?php echo esc_html($type); ?></h4>
@@ -62,7 +64,7 @@ if ($image_query->have_posts()) {
             <div class="openmodal btn-submit">Contact</div>
         </div>
         <div class="navigation-image">
-            <?php
+        <?php
             // Récupérer l'ID de la publication suivante
             $next_post = get_next_post();
             if ($next_post) {
@@ -75,12 +77,27 @@ if ($image_query->have_posts()) {
                 </div>
                 <?php
             }
+
+    // Récupérer l'ID de la publication précédente
+            $previous_post = get_previous_post();
+            if ($previous_post) {
+                $previous_post_id = $previous_post->ID;
+                // Récupérer les informations de l'image précédente
+                $previous_image = get_field('image', $previous_post_id);
+                ?>
+                <div class="previous-photo">
+                    <img src="<?php echo esc_url($previous_image['url']); ?>" alt="<?php echo esc_attr($previous_image['alt']); ?>">
+                </div>
+                <?php
+            }
             ?>
-            <div class="navigation">
-                <?php previous_post_link('%link', '<i class="fas fa-arrow-left"></i>'); ?>
-                <?php next_post_link('%link', '<i class="fas fa-arrow-right"></i>'); ?>
+
+            <div class="navigation">  
+                <?php previous_post_link('%link', '<img id="previous-link" src="' . esc_url(get_template_directory_uri()) . '/assets/images/arrow-left.png" alt="image précédente">'); ?>
+                <?php next_post_link('%link', '<img id="next-link" src="' . esc_url(get_template_directory_uri()) . '/assets/images/arrow-right.png" alt="image suivante">'); ?>
             </div>
         </div>
+
     </div>
 </section>
 
