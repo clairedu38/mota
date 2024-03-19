@@ -304,6 +304,61 @@ footer .footer-menu li {
   height: 30px;
 }
 
+.photo-unique {
+  position: relative;
+}
+
+.photo-survol {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  padding: 15px;
+  box-sizing: border-box;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+}
+.photo-survol .survol-oeil {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.photo-survol .survol-oeil .oeil {
+  width: 3vw;
+  height: auto;
+}
+.photo-survol .survol-fullscreen {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.photo-survol .survol-fullscreen .fullscreen {
+  width: 2.3vw;
+  height: auto;
+}
+.photo-survol .survol-texte {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.photo-survol .survol-texte p {
+  margin: 0;
+  text-transform: uppercase;
+}
+.photo-survol .survol-texte .survol-categorie {
+  font-family: "Space Mono", sans-serif;
+}
+
+.photo-survol:hover {
+  opacity: 1;
+}
+
 .infos-photo {
   display: flex;
   flex-direction: column;

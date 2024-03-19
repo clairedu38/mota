@@ -15,7 +15,7 @@ $args = array(
     'order' => 'DESC' 
 );
 
-$image_query = new WP_Query($args);
+$image_query = new WP_Query($args); // création d' une nouvelle instance de WP_Query
 ?>
 
 <?// Boucle sur les résultats de la requêtre
@@ -112,14 +112,15 @@ if ($image_query->have_posts()) {
         $current_category_id = !empty($categories) ? $categories[0]->term_id : 0;
         // Si aucune catégorie n'est trouvée, l'ID est défini sur 0.
 
+        // Récupération des images de la même catégories
         if ($current_category_id) {
-            $args_similaires = array(
+            $args = array(
                 'post_type' => 'image',
                 'post_status' => 'publish',
                 'posts_per_page' => 2,
                 'orderby' => 'rand',
                 'post__not_in' => array( $post_id ), // ne pas prendre la publication en cours en compte
-                'tax_query' => array( //filtre avec une taxonomie > ici categorie
+                'tax_query' => array( // filtre avec une taxonomie > ici categorie
                     array(
                         'taxonomy' => 'categorie',
                         'field' => 'id',
@@ -128,21 +129,17 @@ if ($image_query->have_posts()) {
                 ),
             );
 
-            $query_similaires = new WP_Query($args_similaires);
+             // création d' une nouvelle instance de WP_Query
+            $query = new WP_Query($args);
 
-            if ($query_similaires->have_posts()) {
-                while ($query_similaires->have_posts()) {
-                    $query_similaires->the_post();
-                    $image_similaire = get_field('image');
+            if ($query->have_posts()) {
+                while ($query->have_posts()) {
+                    $query->the_post();
                     ?>
-                    <div>
-                        <a href="<?php the_permalink(); ?>"> 
-                            <img src="<?php echo esc_url($image_similaire['url']); ?>" alt="<?php echo esc_attr($image_similaire['alt']); ?>">
-                        </a>
-                    </div>
+                    <?php get_template_part('template-parts/photos-blocs'); ?>
                     <?php
                 }
-                wp_reset_postdata();
+                wp_reset_postdata(); // réinitialisation de la requête
             }
         }
         ?>

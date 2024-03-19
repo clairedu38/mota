@@ -5,19 +5,27 @@ $imageaccueil = get_field('image_daccueil');
 ?>
 
 <section class="banner-home">
-<img src="<?php echo $imageaccueil['url']; ?>" alt="<?php echo $imageaccueil['alt']; ?>">
-<h1><?php the_field('titre_banniere'); ?></h1>
+<?php
+    $args = array(
+        'post_type' => 'image',
+        'posts_per_page' => 1, 
+        'orderby' => 'rand',
+    );
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            $image = get_field('image');
+            ?>
+                <img src="<?php echo $image['url']; ?>" alt="banniere accueil">
+            <?php
+        }
+    }
+    wp_reset_postdata();
+    ?>
+<h1>PHOTOGRAPHE EVENT</h1>
 </section>
-
-
-<h2> front page h2 </h2>
-<h3> front page h3</h3>
-<h4> front page description </h4>
-<p> paragraphe </p>
-
-<h2> front page h2 </h2>
-<h3> front page h3</h3>
-<h4> front page description </h4>
-<p> paragraphe </p>
 
 <?php get_footer(); ?>
