@@ -2,40 +2,40 @@
 ?>
 
 <?php
-// Récupérer l'ID de la publication actuelle
+// On récupère l'id de la publication actuelle
 $post_id = get_the_ID();
 
-// Utiliser WP Query pour récupérer les données de la publication
+// Récupération des données de la publication
 $args = array(
-    'p' => $post_id, // Récupérer la publication par son ID
-    'post_type' => 'image', // Type de publication personnalisé
-    'post_status' => 'publish', // Publications publiées uniquement
+    'p' => $post_id, // récupération de la publication par son ID
+    'post_type' => 'image',
+    'post_status' => 'publish', 
     'posts_per_page' => 1 ,
-    'orderby' => 'date', // Tri par date
-    'order' => 'DESC' // Ordre décroissant 
+    'orderby' => 'date', 
+    'order' => 'DESC' 
 );
 
 $image_query = new WP_Query($args);
 ?>
 
-<?// Boucle sur les résultats
+<?// Boucle sur les résultats de la requêtre
 if ($image_query->have_posts()) {
     while ($image_query->have_posts()) {
         $image_query->the_post();
 
-        // Récupérer les informations de l'image
+        // Récupération des infos de l'image
         $image = get_field('image');
         $reference = get_field('reference');
         $type = get_field('type');
         $annee = get_the_date('Y');
-
         $titre = get_the_title();
 
-        // Récupérer les catégories (ici, une seule catégorie est prise en compte)
+        // Récupération de la catégorie
         $categories = wp_get_post_terms($post_id, 'categorie');
-        $categorie = $categories ? $categories[0]->name : '';
+        $categorie = $categories ? $categories[0]->name : ''; 
+        // on vérifie qu'il y ai bien un terme de cette taxonomie
 
-        // Récupérer les formats d'image
+        // Récupération du format d'image
         $formats = wp_get_post_terms($post_id, 'formatimg');
         $format = $formats ? $formats[0]->name : '';
 
@@ -105,8 +105,47 @@ if ($image_query->have_posts()) {
     <div>
         <h3>Vous aimerez aussi</h3>
     </div>
-    <div>
-       <!-- photos apparentées -->
+    <div class="images-similaires">
+        <?php
+        // Récupération des catégories de la publication en cours
+        $categories = wp_get_post_terms($post_id, 'categorie');
+        $current_category_id = !empty($categories) ? $categories[0]->term_id : 0;
+        // Si aucune catégorie n'est trouvée, l'ID est défini sur 0.
+
+        if ($current_category_id) {
+            $args_similaires = array(
+                'post_type' => 'image',
+                'post_status' => 'publish',
+                'posts_per_page' => 2,
+                'orderby' => 'rand',
+                'post__not_in' => array( $post_id ), // ne pas prendre la publication en cours en compte
+                'tax_query' => array( //filtre avec une taxonomie > ici categorie
+                    array(
+                        'taxonomy' => 'categorie',
+                        'field' => 'id',
+                        'terms' => $current_category_id,
+                    ),
+                ),
+            );
+
+            $query_similaires = new WP_Query($args_similaires);
+
+            if ($query_similaires->have_posts()) {
+                while ($query_similaires->have_posts()) {
+                    $query_similaires->the_post();
+                    $image_similaire = get_field('image');
+                    ?>
+                    <div>
+                        <a href="<?php the_permalink(); ?>"> 
+                            <img src="<?php echo esc_url($image_similaire['url']); ?>" alt="<?php echo esc_attr($image_similaire['alt']); ?>">
+                        </a>
+                    </div>
+                    <?php
+                }
+                wp_reset_postdata();
+            }
+        }
+        ?>
     </div>
 </section>
 

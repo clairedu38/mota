@@ -392,6 +392,29 @@ footer .footer-menu li {
   height: auto;
 }
 
+.photos-autres {
+  padding-top: 0;
+}
+.photos-autres .images-similaires {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 34vw;
+  gap: 3vh;
+  margin-top: 4vh;
+  margin-bottom: 5vh;
+}
+.photos-autres .images-similaires > div {
+  width: 100%;
+  height: 100%;
+}
+.photos-autres .images-similaires > div img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
 @media (max-width: 700px) {
   .infos-photo .photo {
     flex-direction: column;
