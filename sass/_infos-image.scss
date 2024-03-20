@@ -103,29 +103,7 @@
 }
 
 .photos-autres {
-
     padding-top: 0;
-
-    .images-similaires {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        height: 34vw;
-        gap: 3vh;
-        margin-top: 4vh;
-        margin-bottom: 5vh;
-
-        > div {
-            width: 100%;
-            height: 100%;
-
-            img {
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-            }
-        }
-    }
 }
 
 @media (max-width: $breakpoint__large_phone) {

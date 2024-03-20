@@ -105,7 +105,7 @@ if ($image_query->have_posts()) {
     <div>
         <h3>Vous aimerez aussi</h3>
     </div>
-    <div class="images-similaires">
+    <div class="catalogue">
         <?php
         // Récupération des catégories de la publication en cours
         $categories = wp_get_post_terms($post_id, 'categorie');
