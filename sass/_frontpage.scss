@@ -20,3 +20,38 @@
     }
 }
 
+.more {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0 0 0;
+
+
+    .btn-submit {
+        width: 19vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+.filtres {
+
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    select {
+        font-family: 'Poppins', sans-serif;
+        padding: 10px 18px;
+        border-radius: 5px;
+        border: 1px solid #B8BBC2;
+        background-color: #ffffff;
+        font-size: 12px;
+        text-transform: uppercase;
+        width: 270px;
+
+        option {
+            font-family: 'Poppins', sans-serif;
+            text-transform:initial;
+        }
+    }
+}

@@ -4,12 +4,12 @@
     justify-content: space-around;
     gap: 3vh;
     margin-top: 4vh;
-    margin-bottom: 5vh;
     flex-wrap: wrap;
 
-    > div {
+    .photo-unique {
         width: 48.5%;
         height: 34vw;
+        position: relative;
 
         img {
         object-fit: cover;
@@ -19,9 +19,7 @@
     }
 }
 
-.photo-unique {
-    position: relative; 
-}
+
 
 .photo-survol {
         position: absolute; 
@@ -80,4 +78,11 @@
 
 .photo-survol:hover {
     opacity: 1;
+}
+
+@media (max-width: $breakpoint__large_phone) {
+    .catalogue > div {
+        width: 100%;
+        height: 60vw;
+    }
 }

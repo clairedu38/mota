@@ -1,46 +1,25 @@
 <?php get_header();
 ?>
-
 <?php
 // On récupère l'id de la publication actuelle
 $post_id = get_the_ID();
 
-// Récupération des données de la publication
-$args = array(
-    'p' => $post_id, // récupération de la publication par son ID
-    'post_type' => 'image',
-    'post_status' => 'publish', 
-    'posts_per_page' => 1 ,
-    'orderby' => 'date', 
-    'order' => 'DESC' 
-);
+// Récupération des infos de l'image
+$image = get_field('image');
+$reference = get_field('reference');
+$type = get_field('type');
+$annee = get_the_date('Y');
+$titre = get_the_title();
 
-$image_query = new WP_Query($args); // création d' une nouvelle instance de WP_Query
+// Récupération de la catégorie
+$categories = wp_get_post_terms($post_id, 'categorie');
+$categorie = $categories ? $categories[0]->name : ''; 
+// on vérifie qu'il y ai bien un terme de cette taxonomie
+
+// Récupération du format d'image
+$formats = wp_get_post_terms($post_id, 'formatimg');
+$format = $formats ? $formats[0]->name : '';
 ?>
-
-<?// Boucle sur les résultats de la requêtre
-if ($image_query->have_posts()) {
-    while ($image_query->have_posts()) {
-        $image_query->the_post();
-
-        // Récupération des infos de l'image
-        $image = get_field('image');
-        $reference = get_field('reference');
-        $type = get_field('type');
-        $annee = get_the_date('Y');
-        $titre = get_the_title();
-
-        // Récupération de la catégorie
-        $categories = wp_get_post_terms($post_id, 'categorie');
-        $categorie = $categories ? $categories[0]->name : ''; 
-        // on vérifie qu'il y ai bien un terme de cette taxonomie
-
-        // Récupération du format d'image
-        $formats = wp_get_post_terms($post_id, 'formatimg');
-        $format = $formats ? $formats[0]->name : '';
-
-        // Afficher les détails de l'image
-        ?>
 
 <section class="infos-photo"> 
     <div class="photo">
@@ -111,9 +90,8 @@ if ($image_query->have_posts()) {
         $categories = wp_get_post_terms($post_id, 'categorie');
         $current_category_id = !empty($categories) ? $categories[0]->term_id : 0;
         // Si aucune catégorie n'est trouvée, l'ID est défini sur 0.
-
         // Récupération des images de la même catégories
-        if ($current_category_id) {
+
             $args = array(
                 'post_type' => 'image',
                 'post_status' => 'publish',
@@ -123,8 +101,8 @@ if ($image_query->have_posts()) {
                 'tax_query' => array( // filtre avec une taxonomie > ici categorie
                     array(
                         'taxonomy' => 'categorie',
-                        'field' => 'id',
-                        'terms' => $current_category_id,
+                        'field' => 'term_id',
+                        'terms' => array($current_category_id),
                     ),
                 ),
             );
@@ -141,19 +119,14 @@ if ($image_query->have_posts()) {
                 }
                 wp_reset_postdata(); // réinitialisation de la requête
             }
-        }
+
+
         ?>
     </div>
 </section>
 
 
 
-<?php
-    }
-}
-   // Réinitialiser les données de la requête
-wp_reset_postdata();
-?>
 
 
 <?php get_footer(); 
