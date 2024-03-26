@@ -1,0 +1,61 @@
+
+.lightbox {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+
+    .lightbox__container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        img {
+            width: 100%;
+            height: 90vh;
+            object-fit: contain;
+        }
+
+        >div {
+            display: flex;
+            text-transform: uppercase;
+            width: 100%;
+            justify-content: space-between;
+            margin-top: 15px;
+
+            .lightbox__ref {
+                font-family: 'Poppins', sans-serif;
+            }
+
+        }
+    }
+
+    .lightbox__prev, .lightbox__next {
+        min-width: 150px;
+
+        &:hover {
+            font-weight: bold;
+        }
+    }
+
+    .lightbox__next {
+        text-align: right;
+    }
+
+    .lightbox__close {
+        position: absolute;
+        top: 2%;
+        right: 7%;
+        color: white;
+        cursor: pointer;
+    }
+
+}

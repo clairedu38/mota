@@ -17,6 +17,7 @@ add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
 function theme_enqueue_scripts() {
     wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.4.1.min.js', array(), '3.4.1', true);
     wp_enqueue_script( 'contact-script', get_stylesheet_directory_uri() . '/js/contact.js', array(), null, true );
+    wp_enqueue_script( 'lightbox-script', get_stylesheet_directory_uri() . '/js/lightbox.js', array(), null, true );
     wp_enqueue_script( 'images-script', get_stylesheet_directory_uri() . '/js/images.js', array(), null, true );
 }
 
