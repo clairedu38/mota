@@ -118,6 +118,23 @@ $format = $formats ? $formats[0]->name : '';
                     <?php
                 }
                 wp_reset_postdata(); // réinitialisation de la requête
+            } else {
+                $new_args = array(
+                    'post_type' => 'image',
+                    'post_status' => 'publish',
+                    'posts_per_page' => 2,
+                    'orderby' => 'rand',
+                );
+    
+                $new_query = new WP_Query($new_args);
+    
+                if ($new_query->have_posts()) {
+                    while ($new_query->have_posts()) {
+                        $new_query->the_post();
+                        get_template_part('template-parts/photos-blocs');
+                    }
+                    wp_reset_postdata(); // réinitialisation de la requête
+                }
             }
 
 
