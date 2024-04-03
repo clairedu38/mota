@@ -36,6 +36,7 @@ section {
 a {
     text-decoration: none;
     color: inherit;
+    cursor: pointer;
   }
 
 h1, h2, h3, h4, a {
@@ -99,7 +100,7 @@ li {
 @media (max-width: $breakpoint__large_phone) {
 
     h1 {
-        font-size: 27.6px ;
+        font-size:2em;
     }
     
     h2 {
@@ -108,4 +109,4 @@ li {
 
 }
   
-
+  

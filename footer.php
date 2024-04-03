@@ -6,7 +6,7 @@
   </div>
   <div class="lightbox__prev">← Précédente</div>
   <div class="lightbox__container">
-    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/nathalie-13.jpeg" alt="Logo Nathalie">
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/nathalie-13.jpeg" alt="Image full">
     <div>
         <div class="lightbox__ref">Référence de la photo</div>
         <div class="lightbox__cat">Catégorie</div>

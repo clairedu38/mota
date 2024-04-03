@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const imageURL = fullscreenImage.dataset.image;
             const imageCategorie = fullscreenImage.dataset.categorie;
             const imageReference = fullscreenImage.dataset.reference;
+            const imageID = fullscreenImage.dataset.id;
             // console.log("Catégorie :", imageCategorie);
             
             lightboxImage.src = imageURL; // Mettre à jour l'URL de l'image dans la lightbox

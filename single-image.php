@@ -72,8 +72,18 @@ $format = $formats ? $formats[0]->name : '';
             ?>
 
             <div class="navigation">  
-                <?php previous_post_link('%link', '<img id="previous-link" src="' . esc_url(get_template_directory_uri()) . '/assets/images/arrow-left.png" alt="image précédente">'); ?>
-                <?php next_post_link('%link', '<img id="next-link" src="' . esc_url(get_template_directory_uri()) . '/assets/images/arrow-right.png" alt="image suivante">'); ?>
+                <?php if (!empty($previous_post)) :                        
+                    $prevArrow = get_permalink($previous_post); ?>
+                    <a href="<?= $prevArrow; ?>">
+                        <img id="previous-link" src="<?= get_template_directory_uri(); ?>/assets/images/arrow-left.png" alt="image précédente" />
+                    </a>
+                <?php endif;
+                if (!empty($next_post)) :
+                    $nextArrow = get_permalink($next_post); ?>
+                    <a href="<?= $nextLink; ?>">
+                        <img id="next-link" src="<?= get_template_directory_uri(); ?>/assets/images/arrow-right.png" alt="image suivante" />
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
 

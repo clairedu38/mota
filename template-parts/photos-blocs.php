@@ -12,7 +12,8 @@ $reference = get_field('reference');
         <div class="survol-fullscreen" 
         data-image="<?php echo esc_attr($photo['url']); ?>"
         data-categorie="<?php foreach ( (array) $categories as $category ) { echo $category->name; } ?>"
-        data-reference="<?php echo esc_attr($reference); ?>">
+        data-reference="<?php echo esc_attr($reference); ?>"
+        data-id="<?php echo get_the_ID(); ?>">
             <img class="fullscreen" src="<?php echo get_template_directory_uri()?>/assets/images/Icon_fullscreen.png" alt="">
         </div>
 

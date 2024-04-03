@@ -40,6 +40,7 @@
 
     .lightbox__prev, .lightbox__next {
         min-width: 150px;
+        cursor: pointer;
 
         &:hover {
             font-weight: bold;

@@ -6,13 +6,9 @@ var lastHeaderMenuItem = headerMenuItems[headerMenuItems.length - 1];
 lastHeaderMenuItem.classList.add('openmodal');
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Get the modal
     var modal = document.getElementById('contact-modal');
-
-    // Get all the elements with the class "openmodal"
     var btns = document.querySelectorAll(".openmodal");
 
-    // Add click event listener to each element with the class "openmodal"
     btns.forEach(function(btn) {
         btn.onclick = function() {
             modal.style.display = "flex";
@@ -30,3 +26,8 @@ document.addEventListener("DOMContentLoaded", function() {
 jQuery(document).ready(function($){
     $("#reference-photo").val($('#reference-text').text());
 });
+
+// Select2 couleurs (filtres photos de la page d'accueil)
+// window.addEventListener('load', () => {
+//     jQuery('select').select2();
+// });
