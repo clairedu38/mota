@@ -87,8 +87,7 @@ $imageaccueil = get_field('image_daccueil');
 
     </form>
 
-    <div class="catalogue" id="catalogue-front">
-    </div>
+    <div class="catalogue" id="catalogue-front"></div>
 
     <div class="more">
         <div class="btn-submit load-more">Charger plus</div>

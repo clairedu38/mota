@@ -48,14 +48,17 @@ add_filter('wp_nav_menu_items', 'custom_footer_menu_items', 10, 2);
 
 
 function filter_posts() {
-    $posts_per_page = 8;
     $filtreFormat = $_POST['formats'];
     $filtreCategories = $_POST['categories'];
     $filtreOrder = $_POST['filtreOrder'];
+    $posts_per_page = $_POST['posts_per_page'];
+
+
 
         $args = array(
             'post_type' => 'image', 
             'posts_per_page' => $posts_per_page, 
+            'orderby' => 'date'
         );
 
         if (!empty($filtreCategories)) {
@@ -74,9 +77,9 @@ function filter_posts() {
             );
         }
 
-        if (!empty($filtreCategories) && !empty($filtreFormat)) {
-            $args['tax_query']['relation'] = 'AND';
-        }
+        // if (!empty($filtreCategories) && !empty($filtreFormat)) {
+        //     $args['tax_query']['relation'] = 'AND';
+        // }
 
 
         if (!empty($filtreOrder)) {

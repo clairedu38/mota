@@ -1,5 +1,10 @@
-function load_ajax() { // Fonction pour charger les données via AJAX
+
+const urlAjax = 'http://localhost/mota/wp-admin/admin-ajax.php'; 
+let numberPostInit = 8;
+
+function load_ajax(postsPerPage) { // Fonction pour charger les données des filtres via AJAX
     console.log('test');  
+    console.log('postsPerPage');  
     const format = document.querySelector('#format').value;
     const category = document.querySelector('#category').value;
     const order = document.querySelector('#orderby').value;
@@ -11,11 +16,9 @@ function load_ajax() { // Fonction pour charger les données via AJAX
         'action': 'filter_posts',
         'formats': format,
         'categories': category,
-        'filtreOrder': order
+        'filtreOrder': order,
+        'posts_per_page': postsPerPage
     }
-
-     // URL de l'interface AJAX
-    const urlAjax = 'http://localhost/mota/wp-admin/admin-ajax.php'; 
 
     // Envoie de la requête AJAX
     fetch(urlAjax, {
@@ -26,7 +29,7 @@ function load_ajax() { // Fonction pour charger les données via AJAX
         },
         body: new URLSearchParams(data),
     })
-     .then(response => response.text()) // Récupère la réponse au format texte
+    .then(response => response.text()) // Récupère la réponse au format texte
     .then(body => {
         // console.log(body);
 
@@ -36,15 +39,26 @@ function load_ajax() { // Fonction pour charger les données via AJAX
     });
 }
 
+function load_more() {
+    numberPostInit += 8; 
+    load_ajax(numberPostInit); 
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-    load_ajax();
+    load_ajax(numberPostInit);
 
     const filters = document.querySelectorAll('select');
 
     filters.forEach(e => {
         e.addEventListener('change', function () {
-            load_ajax();
+            load_ajax(numberPostInit);
         });
     }); 
 
+    const loadMoreBtn = document.querySelector('.load-more');
+    loadMoreBtn.addEventListener('click', function () {
+        load_more();
+    });
 })
+
+
