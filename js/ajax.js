@@ -3,8 +3,7 @@ const urlAjax = 'http://localhost/mota/wp-admin/admin-ajax.php';
 let numberPostInit = 8;
 
 function load_ajax(postsPerPage) { // Fonction pour charger les données des filtres via AJAX
-    console.log('test');  
-    console.log('postsPerPage');  
+    // console.log(postsPerPage);  
     const format = document.querySelector('#format').value;
     const category = document.querySelector('#category').value;
     const order = document.querySelector('#orderby').value;
@@ -33,9 +32,10 @@ function load_ajax(postsPerPage) { // Fonction pour charger les données des fil
     .then(body => {
         // console.log(body);
 
-        const catalogue = document.querySelector('#catalogue-front');
+        const catalogue = document.querySelector('.catalogue-front');
         catalogue.innerHTML = body;
-
+         // Réinitialiser la lightbox après le chargement AJAX
+        initializeLightbox();
     });
 }
 

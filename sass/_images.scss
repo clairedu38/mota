@@ -1,13 +1,13 @@
 .catalogue {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     gap: 3vh;
     margin-top: 4vh;
     flex-wrap: wrap;
 
     .photo-unique {
-        width: 48.5%;
+        width: 38vw;
         height: 34vw;
         position: relative;
 
@@ -44,6 +44,7 @@
             .oeil {
                 width: 3vw;
                 height: auto;
+                min-width: 30px;
             }
         }
 
@@ -56,6 +57,7 @@
             .fullscreen {
                 width: 2.3vw;
                 height: auto;
+                min-width: 30px;
             }
 
         }

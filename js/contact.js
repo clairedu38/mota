@@ -27,7 +27,3 @@ jQuery(document).ready(function($){
     $("#reference-photo").val($('#reference-text').text());
 });
 
-// Select2 couleurs (filtres photos de la page d'accueil)
-// window.addEventListener('load', () => {
-//     jQuery('select').select2();
-// });

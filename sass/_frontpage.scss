@@ -35,6 +35,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        min-width: 250px;
     }
 }
 .filtres {
@@ -74,56 +75,4 @@
     }
 }
 
-// FILTRES AVEC SELECT 2
 
-.select2-dropdown .select2-search--dropdown .select2-search__field{
-	display: none;
-    height: 0;
-}
-
-.select2-results__option--highlighted {
-    background-color: #ff0000 !important; 
-    color: #ffffff !important; 
-
-}
-
-.select2-container--default .select2-selection--single {
-    padding: 5px 20px;
-    background-color: #fff;
-    border: 1px solid #aaa;
-    border-radius: 4px;
-    height: 39px !important;
-    text-transform: uppercase;
-}
-
-.select2-search--dropdown {
-    display: flex !important;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-    font-family: 'Poppins', sans-serif;
-}
-
-.select2-results__option {
-    font-family: 'Poppins', sans-serif;
-    text-transform:initial;
-}
-
-.select2-search .select2-search--dropdown {
-    display: none;
-}
-
-.select2-container--default .select2-results__option:first-child {
-    background-color: #FFD6D6 !important;
-    color: #000 !important;
-  }
-
-// .select2-container--default .select2-selection--single .select2-selection__arrow {
-//     top: 5px !important;
-//     right: 9px !important;
-// }
-
-
-.select2 .select2-container .select2-container--default {
-    width: 200px !important; 
-}
