@@ -34,12 +34,13 @@ $imageaccueil = get_field('image_daccueil');
     <form  class="filtres" action="" method="post">
 
     <?php 
-    $filtreCategories = $_POST['category-filter']; 
-    $filtreFormat = $_POST['format-filter']; 
-    $filtreOrders = $_POST['orderby']; 
+    //$filtreCategories = $_POST['category-filter']; 
+    // $filtreFormat = $_POST['format-filter']; 
+    // $filtreOrders = $_POST['orderby']; 
     // var_dump($filtreOrder);
     // var_dump($filtreFormat);
-    // var_dump($filtreCategories); ?>
+    // var_dump($filtreCategories); 
+    ?>
     
         <div class="filtres-taxonomy">
             <!-- filtre CATEGORIE -->
@@ -47,44 +48,59 @@ $imageaccueil = get_field('image_daccueil');
             $categories = get_terms('categorie'); // récupération des catégories
 
             //print_r($categories); ?>
-            <select name="category-filter" id="category">
-            <option value="">Catégories</option>
-            <?php 
-                foreach ($categories as $category) { ?>
-                    <option <?php echo ($filtreCategories == $category->slug) ? 'selected' : ''; ?> 
-                    value="<?php echo $category->slug; ?>">
-                    <?php echo $category->name; ?>
-                </option>
+            
+            <div class="filter" id="category-filter">
+                <div class="filter-selected">
+                    <div class="option-selected" id="category-selected">Catégories</div>
+                    <img class="show-more" id="show-category" src="<?= get_template_directory_uri(); ?>/assets/images/chevron-down-s.png" alt="chevron pour choisir catégory" />
+                </div>
+                <div class="filter-options">
+                    <div class="option all-option">Catégories</div>
                 <?php 
-                } ?>
-            </select>
+                    foreach ($categories as $category) { ?>
+                        <div class="option category-option" id="category-<?php echo $category->slug; ?>">
+                        <?php echo $category->name; ?> 
+                    </div>
+                    <?php 
+                    } ?>
+                </div>
+            </div>
 
             <!-- filtre FORMAT -->
             <?php
             $formats = get_terms('formatimg'); // récupération des catégories
             //  print_r($formats); ?>
-            <select name="format-filter" id="format">
-            <option value="">Format</option>
-            <?php 
-                foreach ($formats as $format) { ?>
-                    <option <?php echo ($filtreFormat == $format->slug) ? 'selected' : ''; ?> 
-                    value=<?php echo $format->slug; ?>>
-                        <?php echo $format->name; ?>
-                    </option>;
-                <?php
-                }
-                ?>
-            </select>
+            <div class="filter" id="format-filter">
+                <div class="filter-selected">
+                    <div class="option-selected" id="format-selected">Formats</div>
+                    <img class="show-more" id="show-format" src="<?= get_template_directory_uri(); ?>/assets/images/chevron-down-s.png" alt="chevron pour choisir catégory" />
+                </div>
+                <div class="filter-options">
+                <div class="option all-option">Formats</div>
+                <?php 
+                    foreach ($formats as $format) { ?>
+                        <div class="option format-option" id="format-<?php echo $format->slug; ?>">
+                        <?php echo $format->name; ?> 
+                    </div>
+                    <?php 
+                    } ?>
+                </div>
+            </div>
         </div>
     
         <div class="filtre-tri">
-            <select name="orderby" id="orderby">
-                <option value="">Trier par</option>
-                <option <?php selected($filtreOrders, 'DESC'); ?> value="DESC">à partir des plus récentes</option>
-                <option <?php selected($filtreOrders, 'ASC'); ?> value="ASC">à partir des plus anciennes</option>
-            </select>
-        </div>
-
+            <div class="filter" id="orderby">
+                <div class="filter-selected">
+                    <div class="option-selected" id="order-selected">Trier par</div>
+                    <img class="show-more" id="show-order" src="<?= get_template_directory_uri(); ?>/assets/images/chevron-down-s.png" alt="chevron pour choisir catégory" />
+                </div>
+                <div class="filter-options">
+                    <div class="option all-option">Trier par</div>
+                    <div class="option order-option" id="DESC">à partir des plus récentes</div>
+                    <div class="option order-option" id="ASC">à partir des plus anciennes</div>
+                </div>
+            </div>   
+        </div>      
     </form>
     <div class="catalogue catalogue-front"></div>
 

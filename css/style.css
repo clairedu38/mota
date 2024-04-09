@@ -561,28 +561,65 @@ footer .footer-menu li {
     gap: 8px;
   }
 }
-.filtres select {
-  font-family: "Poppins", sans-serif;
-  padding: 10px 18px;
-  border-radius: 5px;
-  border: 1px solid #B8BBC2;
-  background-color: #ffffff;
-  font-size: 12px;
-  text-transform: uppercase;
-  width: 270px;
-}
-.filtres select option {
-  font-family: "Poppins", sans-serif;
-  text-transform: initial;
-}
 
+.filtres-taxonomy {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
 @media (max-width: 700px) {
   .filtres-taxonomy {
-    display: flex;
     flex-direction: column;
     gap: 8px;
   }
 }
+
+.filter {
+  border-radius: 5px;
+  border: 1px solid #B8BBC2;
+  background-color: #ffffff;
+  width: 270px;
+}
+.filter .filter-selected {
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 10px 18px;
+}
+.filter .filter-selected:hover {
+  cursor: pointer;
+}
+.filter .filter-selected .option-selected {
+  font-family: "Poppins", sans-serif;
+}
+.filter .filter-options {
+  display: none;
+  flex-direction: column;
+}
+.filter .filter-options > div {
+  font-size: 12px;
+  padding: 10px 18px;
+  font-family: "Poppins", sans-serif;
+  text-transform: initial;
+}
+.filter .filter-options > div:hover {
+  background: var(--red3);
+  cursor: pointer;
+}
+.filter .filter-options > div:active {
+  background: var(--red);
+  cursor: defaut;
+  color: white;
+}
+.filter .filter-options > div:first-child {
+  color: white;
+}
+.filter .filter-options > div:first-child:hover {
+  background: white;
+  cursor: auto;
+}
+
 .lightbox {
   position: fixed;
   top: 0;
