@@ -36,6 +36,11 @@ function handleFilterClick() {
     const options = this.nextElementSibling;
     const isopen = options.style.display === 'flex';
 
+    const allFilters = document.querySelectorAll('.filter-selected');
+    allFilters.forEach(function(filter) {
+        filter.classList.remove('clicked'); // Supprime la classe 'clicked' de tous les éléments .filter-selected
+    });
+
     const allOptions = document.querySelectorAll('.filter-options');
     allOptions.forEach(function(option) {
         if (option.style.display === 'flex') {
@@ -45,12 +50,12 @@ function handleFilterClick() {
 
     if (!isopen) {
         options.style.display = 'flex';
+        this.classList.add('clicked');
+
     } else {
         options.style.display = 'none';
+        this.classList.remove('clicked');
     }
-
-    const showMoreIcon = this.querySelector('.show-more');
-    showMoreIcon.classList.toggle('rotate');
 }
 
 // Fonction pour gérer le clic sur les options

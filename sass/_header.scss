@@ -52,11 +52,12 @@ header {
     position: absolute;
     flex-direction: column;
     padding: 0;
+    align-items: flex-start;
 
     .logo-header {
       height: 71px;
       display: flex;
-      margin-left: 0;
+      margin-left: 40px;
 
       img {
         height: 9px;
@@ -71,6 +72,13 @@ header {
       display: none;
       justify-content: center;
       align-items: center;
+      opacity: 0;
+
+
+        &.menu-popin {
+          opacity: 1;
+          transition: opacity 0.5s;
+        }
       
 
       .header-menu {
@@ -152,3 +160,4 @@ header {
     }
   }
 }
+

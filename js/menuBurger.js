@@ -23,8 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const mainMenus = mainMenu.querySelectorAll('a');
     mainMenus.forEach(link => {
         link.addEventListener('click', function () {
-            mainMenus.classList.remove('menu-popin');
-            mainMenus.style.display = 'none';
+            mainMenu.classList.remove('menu-popin'); 
+            mainMenu.style.display = 'none';
             menuToggle.classList.toggle('open'); 
         });
     }); 

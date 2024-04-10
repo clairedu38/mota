@@ -11,6 +11,7 @@
 // BREAKPOINT MEDIA QUERY
 
 $breakpoint__large_phone: 700px;
+$breakpoint__tab: 1115px;
 
 * {
     font-family: 'Space Mono', sans-serif;
@@ -91,6 +92,7 @@ li {
     height: 50px;
     font-size: 12px;
     font-family: 'Space Mono', sans-serif;
+    transition: background-color 0.6s, color 0.6s;
 
     &:hover {
         cursor: pointer;
@@ -111,6 +113,10 @@ li {
     
     h2 {
         font-size: 46px ;
+    }
+
+    h3 {
+        text-align: center;
     }
 
 }

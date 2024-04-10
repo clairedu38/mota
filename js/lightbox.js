@@ -26,14 +26,19 @@ function initializeLightbox() {
             currentImageIndex = index;
             showImage(currentImageIndex);
             lightbox.style.display = 'flex';
+            lightbox.classList.add('lightbox-popin');
         });
     });
 
     function showImage(index) {
-        const currentImage = images[index];
-        lightboxImage.src = currentImage.url;
-        lightboxCategorie.textContent = currentImage.categorie;
-        lightboxReference.textContent = currentImage.reference;
+        if (index >= 0 && index < images.length) {
+            const currentImage = images[index];
+            lightboxImage.src = currentImage.url;
+            lightboxCategorie.textContent = currentImage.categorie;
+            lightboxReference.textContent = currentImage.reference;
+        } else {
+            console.error(index);
+        }
     }
 
     function showNextImage() {
@@ -52,6 +57,7 @@ function initializeLightbox() {
     const closeBtn = document.querySelector('.lightbox__close img');
     closeBtn.addEventListener('click', function() {
         lightbox.style.display = 'none';
+        lightbox.classList.remove('lightbox-popin');
     });
 }
 

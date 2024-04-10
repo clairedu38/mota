@@ -85,6 +85,7 @@ li {
   height: 50px;
   font-size: 12px;
   font-family: "Space Mono", sans-serif;
+  transition: background-color 0.6s, color 0.6s;
 }
 .btn-submit:hover {
   cursor: pointer;
@@ -102,6 +103,9 @@ li {
   }
   h2 {
     font-size: 46px;
+  }
+  h3 {
+    text-align: center;
   }
 }
 header {
@@ -144,11 +148,12 @@ header .menu-toggle {
     position: absolute;
     flex-direction: column;
     padding: 0;
+    align-items: flex-start;
   }
   header .logo-header {
     height: 71px;
     display: flex;
-    margin-left: 0;
+    margin-left: 40px;
   }
   header .logo-header img {
     height: 9px;
@@ -161,6 +166,11 @@ header .menu-toggle {
     display: none;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+  }
+  header #main-menu.menu-popin {
+    opacity: 1;
+    transition: opacity 0.5s;
   }
   header #main-menu .header-menu {
     flex-direction: column;
@@ -259,10 +269,10 @@ footer .footer-menu li {
   z-index: 1;
   left: 0;
   top: 5%;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
   justify-content: center;
   align-items: center;
 }
@@ -292,6 +302,11 @@ footer .footer-menu li {
   align-items: stretch;
   margin: 5% 25%;
 }
+@media (max-width: 700px) {
+  .modal .modal-content form .contact-form {
+    margin: 5% 15%;
+  }
+}
 .modal .modal-content form .contact-form p {
   margin: 10px 0;
 }
@@ -308,7 +323,7 @@ footer .footer-menu li {
   width: 100%;
 }
 .modal .modal-content form .contact-form .wpcf7-email, .modal .modal-content form .contact-form .wpcf7-text {
-  height: 30px;
+  height: 40px;
 }
 
 .catalogue {
@@ -385,6 +400,12 @@ footer .footer-menu li {
   opacity: 1;
 }
 
+@media (max-width: 1115px) {
+  .catalogue .photo-unique {
+    width: 100%;
+    height: 60vw;
+  }
+}
 @media (max-width: 700px) {
   .catalogue .photo-unique {
     width: 100%;
@@ -493,6 +514,7 @@ footer .footer-menu li {
   }
   .infos-photo .photo .description-photo > div {
     margin-right: 0;
+    padding: 0 0 30px 0;
   }
   .infos-photo .contact-photo {
     flex-direction: column;
@@ -554,7 +576,7 @@ footer .footer-menu li {
   justify-content: space-between;
   width: 100%;
 }
-@media (max-width: 700px) {
+@media (max-width: 1115px) {
   .filtres {
     flex-direction: column;
     align-items: center;
@@ -567,7 +589,7 @@ footer .footer-menu li {
   align-items: flex-start;
   gap: 10px;
 }
-@media (max-width: 700px) {
+@media (max-width: 1115px) {
   .filtres-taxonomy {
     flex-direction: column;
     gap: 8px;
@@ -587,8 +609,18 @@ footer .footer-menu li {
   font-size: 12px;
   padding: 10px 18px;
 }
+.filter .filter-selected.clicked {
+  border-radius: 5px 5px 0 0;
+  border: 1.3px solid #215AFF;
+}
+.filter .filter-selected.clicked .show-more {
+  transition: transform 0.5s;
+  transform: rotate(180deg);
+}
 .filter .filter-selected:hover {
   cursor: pointer;
+  border-radius: 5px 5px 0 0;
+  border: 1.3px solid #215AFF;
 }
 .filter .filter-selected .option-selected {
   font-family: "Poppins", sans-serif;
@@ -614,10 +646,16 @@ footer .footer-menu li {
 }
 .filter .filter-options > div:first-child {
   color: white;
+  padding: 0;
 }
 .filter .filter-options > div:first-child:hover {
   background: white;
   cursor: auto;
+}
+
+.show-more {
+  transition: transform 0.5s;
+  transform: rotate(0deg);
 }
 
 .lightbox {
@@ -633,6 +671,11 @@ footer .footer-menu li {
   justify-content: space-around;
   color: white;
   gap: 10px;
+  opacity: 0;
+}
+.lightbox.lightbox-popin {
+  opacity: 1;
+  transition: opacity 3s;
 }
 @media (max-width: 700px) {
   .lightbox {
@@ -688,8 +731,12 @@ footer .footer-menu li {
 }
 .lightbox .lightbox__close {
   position: absolute;
-  top: 2%;
+  top: 4%;
   right: 7%;
   color: white;
   cursor: pointer;
+}
+.lightbox .lightbox__close img {
+  width: 25px;
+  height: 20px;
 }/*# sourceMappingURL=style.css.map */

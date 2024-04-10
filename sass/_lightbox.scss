@@ -1,6 +1,5 @@
 
 .lightbox {
-
     position: fixed;
     top: 0;
     left: 0;
@@ -13,6 +12,12 @@
     justify-content: space-around;
     color: white;
     gap: 10px;
+    opacity: 0;
+    
+    &.lightbox-popin {
+        opacity: 1;
+        transition: opacity 3s;
+    }
 
     @media (max-width: $breakpoint__large_phone) {
         flex-direction: column;
@@ -74,10 +79,15 @@
 
     .lightbox__close {
         position: absolute;
-        top: 2%;
+        top: 4%;
         right: 7%;
         color: white;
         cursor: pointer;
+
+        img {
+            width: 25px;
+            height: 20px;
+        }
     }
 
 }
