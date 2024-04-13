@@ -9,7 +9,8 @@
 }
 
 * {
-  font-family: "Space Mono", sans-serif;
+  font-family: "space_mono", sans-serif;
+  font-weight: normal;
 }
 
 body {
@@ -47,30 +48,30 @@ h1, h2 {
 
 h1 {
   font-size: 96px;
-  font-weight: 700;
+  font-weight: bold;
   color: transparent;
-  -webkit-text-stroke: 2px rgb(255, 255, 255);
+  -webkit-text-stroke: 3px rgb(255, 255, 255);
   text-align: center;
 }
 
 h2 {
   font-size: calc(3vw + 22px);
-  font-weight: 400;
+  font-weight: normal;
 }
 
 h3 {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: normal;
 }
 
 h4 {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: normal;
 }
 
 p {
   font-size: 14px;
-  font-family: "Poppins", sans-serif;
+  font-family: "poppins", sans-serif;
   font-weight: 300;
 }
 
@@ -84,13 +85,15 @@ li {
   color: black;
   height: 50px;
   font-size: 12px;
-  font-family: "Space Mono", sans-serif;
-  transition: background-color 0.6s, color 0.6s;
+  font-family: "space_mono", sans-serif;
+  font-weight: normal;
+  transition: background-color 0.6s, color 0.6s, font-weight 0.6s ease-in-out;
 }
 .btn-submit:hover {
   cursor: pointer;
   background-color: black;
   color: white;
+  font-weight: bold;
 }
 
 .content {
@@ -100,6 +103,7 @@ li {
 @media (max-width: 700px) {
   h1 {
     font-size: 2em;
+    -webkit-text-stroke: 0.8px rgb(255, 255, 255);
   }
   h2 {
     font-size: 46px;
@@ -170,11 +174,11 @@ header .menu-toggle {
   }
   header #main-menu.menu-popin {
     opacity: 1;
-    transition: opacity 0.5s;
+    transition: opacity 0.5s ease-in-out;
   }
   header #main-menu .header-menu {
     flex-direction: column;
-    gap: 18px;
+    gap: 40px;
     padding: 0;
     align-items: center;
   }
@@ -312,7 +316,7 @@ footer .footer-menu li {
 }
 .modal .modal-content form .contact-form .form {
   font-size: 12px;
-  font-family: "Poppins", sans-serif;
+  font-family: "poppins", sans-serif;
   font-weight: 500;
   text-align: left;
   text-transform: uppercase;
@@ -321,12 +325,13 @@ footer .footer-menu li {
   border-radius: 8px;
   border: 1px solid var(--medium-grey);
   width: 100%;
+  margin-top: 5px;
 }
 .modal .modal-content form .contact-form .wpcf7-email, .modal .modal-content form .contact-form .wpcf7-text {
   height: 40px;
 }
 
-.catalogue {
+.catalog {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -334,19 +339,19 @@ footer .footer-menu li {
   margin-top: 4vh;
   flex-wrap: wrap;
 }
-.catalogue .photo-unique {
+.catalog .photo-unique {
   width: 38vw;
   height: 34vw;
   position: relative;
 }
-.catalogue .photo-unique img {
+.catalog .photo-unique img {
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
-.photo-survol {
+.photo-hover {
   position: absolute;
   top: 0;
   left: 0;
@@ -360,43 +365,44 @@ footer .footer-menu li {
   flex-direction: column;
   justify-content: space-between;
   opacity: 0;
+  transition: opacity 0.6s ease-in-out;
 }
-.photo-survol .survol-oeil {
+.photo-hover .hover-eye {
   position: relative;
   display: flex;
   justify-content: center;
 }
-.photo-survol .survol-oeil .oeil {
+.photo-hover .hover-eye .eye {
   width: 3vw;
   height: auto;
   min-width: 30px;
 }
-.photo-survol .survol-fullscreen {
+.photo-hover .hover-fullscreen {
   width: 100%;
   display: flex;
   justify-content: flex-end;
   cursor: pointer;
 }
-.photo-survol .survol-fullscreen .fullscreen {
+.photo-hover .hover-fullscreen .fullscreen {
   width: 2.3vw;
   height: auto;
   min-width: 30px;
 }
-.photo-survol .survol-texte {
+.photo-hover .hover-text {
   color: white;
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
-.photo-survol .survol-texte p {
+.photo-hover .hover-text p {
   margin: 0;
   text-transform: uppercase;
 }
-.photo-survol .survol-texte .survol-categorie {
-  font-family: "Space Mono", sans-serif;
+.photo-hover .hover-text .hover-category {
+  font-family: "space_mono", sans-serif;
 }
 
-.photo-survol:hover {
+.photo-hover:hover {
   opacity: 1;
 }
 
@@ -424,7 +430,7 @@ footer .footer-menu li {
 }
 .infos-photo .photo > div {
   width: 50%;
-  height: auto;
+  max-height: 80vh;
 }
 .infos-photo .photo > div img {
   width: 100%;
@@ -448,7 +454,6 @@ footer .footer-menu li {
 .infos-photo .photo .description-photo h2 {
   margin-bottom: 20px;
   line-height: 1;
-  max-width: 420px;
   word-wrap: break-word;
 }
 .infos-photo .photo .description-photo h4 {
@@ -501,7 +506,7 @@ footer .footer-menu li {
   height: auto;
 }
 
-.photos-autres {
+.photos-other {
   padding-top: 0;
 }
 
@@ -518,10 +523,10 @@ footer .footer-menu li {
   }
   .infos-photo .contact-photo {
     flex-direction: column;
+    padding-top: 10px;
   }
   .infos-photo .contact-photo > div {
     flex-direction: column;
-    align-items: center;
     width: 100%;
   }
   .infos-photo .contact-photo .btn-submit {
@@ -571,26 +576,26 @@ footer .footer-menu li {
   min-width: 250px;
 }
 
-.filtres {
+.filters {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 @media (max-width: 1115px) {
-  .filtres {
+  .filters {
     flex-direction: column;
     align-items: center;
     gap: 8px;
   }
 }
 
-.filtres-taxonomy {
+.filters-taxonomy {
   display: flex;
   align-items: flex-start;
   gap: 10px;
 }
 @media (max-width: 1115px) {
-  .filtres-taxonomy {
+  .filters-taxonomy {
     flex-direction: column;
     gap: 8px;
   }
@@ -614,7 +619,7 @@ footer .footer-menu li {
   border: 1.3px solid #215AFF;
 }
 .filter .filter-selected.clicked .show-more {
-  transition: transform 0.5s;
+  transition: transform 0.5s ease-in-out;
   transform: rotate(180deg);
 }
 .filter .filter-selected:hover {
@@ -623,7 +628,10 @@ footer .footer-menu li {
   border: 1.3px solid #215AFF;
 }
 .filter .filter-selected .option-selected {
-  font-family: "Poppins", sans-serif;
+  font-family: "poppins", sans-serif;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
 }
 .filter .filter-options {
   display: none;
@@ -632,7 +640,8 @@ footer .footer-menu li {
 .filter .filter-options > div {
   font-size: 12px;
   padding: 10px 18px;
-  font-family: "Poppins", sans-serif;
+  font-family: "poppins", sans-serif;
+  font-weight: 500;
   text-transform: initial;
 }
 .filter .filter-options > div:hover {
@@ -646,7 +655,7 @@ footer .footer-menu li {
 }
 .filter .filter-options > div:first-child {
   color: white;
-  padding: 0;
+  padding: 5px;
 }
 .filter .filter-options > div:first-child:hover {
   background: white;
@@ -654,7 +663,7 @@ footer .footer-menu li {
 }
 
 .show-more {
-  transition: transform 0.5s;
+  transition: transform 0.5s ease-in-out;
   transform: rotate(0deg);
 }
 
@@ -675,7 +684,7 @@ footer .footer-menu li {
 }
 .lightbox.lightbox-popin {
   opacity: 1;
-  transition: opacity 3s;
+  transition: opacity 3s ease-in-out;
 }
 @media (max-width: 700px) {
   .lightbox {
@@ -688,10 +697,9 @@ footer .footer-menu li {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 0 10%;
 }
 .lightbox .lightbox__container img {
-  width: 100%;
+  width: 70vw;
   height: 90vh;
   -o-object-fit: contain;
      object-fit: contain;
@@ -709,7 +717,7 @@ footer .footer-menu li {
   margin-top: 15px;
 }
 .lightbox .lightbox__container > div .lightbox__ref {
-  font-family: "Poppins", sans-serif;
+  font-family: "poppins", sans-serif;
 }
 .lightbox .lightbox__prev, .lightbox .lightbox__next {
   min-width: 100px;
@@ -737,6 +745,55 @@ footer .footer-menu li {
   cursor: pointer;
 }
 .lightbox .lightbox__close img {
-  width: 25px;
-  height: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+@font-face {
+  font-family: "space_mono";
+  src: url("../assets/fonts/spacemono-bold-webfont.woff2") format("woff2"), url("../assets/fonts/spacemono-bold-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "space_mono";
+  src: url("../assets/fonts/spacemono-bolditalic-webfont.woff2") format("woff2"), url("../assets/fonts/spacemono-bolditalic-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "space_mono";
+  src: url("../assets/fonts/spacemono-italic-webfont.woff2") format("woff2"), url("../assets/fonts/spacemono-italic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "space_mono";
+  src: url("../assets/fonts/spacemono-regular-webfont.woff2") format("woff2"), url("../assets/fonts/spacemono-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "poppins";
+  src: url("../assets/fonts/poppins-bold-webfont.woff2") format("woff2"), url("../assets/fonts/poppins-bold-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "poppins";
+  src: url("../assets/fonts/poppins-light-webfont.woff2") format("woff2"), url("../assets/fonts/poppins-light-webfont.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "poppins";
+  src: url("../assets/fonts/poppins-medium-webfont.woff2") format("woff2"), url("../assets/fonts/poppins-medium-webfont.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "poppins";
+  src: url("../assets/fonts/poppins-regular-webfont.woff2") format("woff2"), url("../assets/fonts/poppins-regular-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
 }/*# sourceMappingURL=style.css.map */

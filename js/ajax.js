@@ -8,10 +8,8 @@ let filterCategoryChoice = "";
 document.addEventListener("DOMContentLoaded", function() {
     // Gestion des filtres
     addFilterListeners();
-
     // Chargement des données initiales
     load_ajax(numberPostInit);
-
     // Gestion du chargement supplémentaire
     const loadMoreBtn = document.querySelector('.load-more');
     loadMoreBtn.addEventListener('click', load_more);
@@ -34,11 +32,10 @@ function addFilterListeners() {
 // Fonction pour gérer le clic sur les filtres
 function handleFilterClick() {
     const options = this.nextElementSibling;
-    const isopen = options.style.display === 'flex';
 
     const allFilters = document.querySelectorAll('.filter-selected');
     allFilters.forEach(function(filter) {
-        filter.classList.remove('clicked'); // Supprime la classe 'clicked' de tous les éléments .filter-selected
+        filter.classList.remove('clicked');
     });
 
     const allOptions = document.querySelectorAll('.filter-options');
@@ -48,7 +45,7 @@ function handleFilterClick() {
         }
     });
 
-    if (!isopen) {
+    if (!options.style.display === 'flex') {
         options.style.display = 'flex';
         this.classList.add('clicked');
 
@@ -79,7 +76,7 @@ function handleOptionClick() {
     }
 
     if (filterParent.id === "format-filter") {
-        if (!this.classList.contains('all-option')) { // On vérifie si l'option cliquée n'est pas "Catégories"
+        if (!this.classList.contains('all-option')) { // On vérifie si l'option cliquée n'est pas "Formats"
         filterFormatChoice = this.textContent; // Met à jour la variable avec le texte de l'option cliquée
         } else {
             filterFormatChoice = "";
@@ -123,13 +120,13 @@ function load_ajax(postsPerPage) {
     })
     .then(response => response.text())
     .then(body => {
-        const catalogue = document.querySelector('.catalogue-front');
+        const catalogue = document.querySelector('.catalog-front');
         catalogue.innerHTML = body;
         initializeLightbox();
     });
 }
 
-// Fonction pour charger plus de données
+// Fonction pour charger plus d'images
 function load_more() {
     numberPostInit += 8; 
     load_ajax(numberPostInit); 

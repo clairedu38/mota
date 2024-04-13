@@ -2,7 +2,6 @@
 var headerMenuItems = document.querySelectorAll('#main-menu .header-menu li');
 var lastHeaderMenuItem = headerMenuItems[headerMenuItems.length - 1];
 
-// Ajoutez la classe "contact" au dernier élément du menu
 lastHeaderMenuItem.classList.add('openmodal');
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -23,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+// Utilisation de Jquery pour récupérer la référence de la photo et l'inclure dans le formulaire de contact
 jQuery(document).ready(function($){
     $("#reference-photo").val($('#reference-text').text());
 });

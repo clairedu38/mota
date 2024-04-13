@@ -4,9 +4,7 @@
     height: 80vh;
     padding: 0;
 
-    @media (max-width: $breakpoint__large_phone) {
-        height: 50vh;
-    }
+    @media (max-width: $breakpoint__large_phone) {height: 50vh;}
 
     img {
        z-index: 0;
@@ -29,7 +27,6 @@
     justify-content: center;
     padding: 40px 0 0 0;
 
-
     .btn-submit {
         width: 19vw;
         display: flex;
@@ -38,7 +35,8 @@
         min-width: 250px;
     }
 }
-.filtres {
+
+.filters {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -50,8 +48,7 @@
     }
 }
 
-
-.filtres-taxonomy {
+.filters-taxonomy {
     display: flex;
     align-items: flex-start;
     gap: 10px;
@@ -81,7 +78,7 @@
             border: 1.3px solid #215AFF;
 
             .show-more {
-                transition: transform 0.5s;
+                transition: transform 0.5s ease-in-out;
                 transform: rotate(180deg);
             }
         }
@@ -93,7 +90,10 @@
         }
 
         .option-selected {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'poppins', sans-serif;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
         }
     }
 
@@ -104,7 +104,8 @@
         >div {
             font-size: 12px;
             padding: 10px 18px;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'poppins', sans-serif;
+            font-weight: 500;
             text-transform:initial;
 
             &:hover {
@@ -121,7 +122,7 @@
         
         >div:first-child {
             color: white;
-            padding: 0;
+            padding: 5px;
 
             &:hover {
                 background: white;
@@ -132,6 +133,6 @@
 }
 
 .show-more {
-    transition: transform 0.5s;
+    transition: transform 0.5s ease-in-out;
     transform: rotate(0deg);
 }

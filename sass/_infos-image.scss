@@ -10,7 +10,7 @@
 
         >div {
             width: 50%;
-            height: auto;
+            max-height: 80vh;
 
             img {
                 width: 100%;
@@ -37,7 +37,6 @@
             h2 {
                 margin-bottom: 20px;
                 line-height: 1;
-                max-width: 420px;
                 word-wrap: break-word;
             }
             h4 {
@@ -75,14 +74,12 @@
             justify-content: flex-end;
             padding-bottom: 20px;
             
-
             .previous-photo, .next-photo {
                 display: none;
                 width: 100%;
                 height: 70px;
             }
 
-    
             img {
                 width: 100%;
                 height: 100%;
@@ -103,7 +100,7 @@
     }
 }
 
-.photos-autres {
+.photos-other {
     padding-top: 0;
 }
 
@@ -122,15 +119,15 @@
                 }
             }
         }
-    
         .contact-photo {
             flex-direction: column;
+            padding-top: 10px;
 
             >div {
                 flex-direction: column;
-                align-items: center;
                 width: 100%;
             }
+
             .btn-submit {
                 margin-left: 0;
                 width: 100%;

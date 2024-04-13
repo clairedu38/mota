@@ -1,4 +1,4 @@
-.catalogue {
+.catalog {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -19,65 +19,65 @@
     }
 }
 
-.photo-survol {
-        position: absolute; 
-        top: 0; 
-        left: 0; 
+.photo-hover {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%;
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex; 
+    padding: 15px; 
+    box-sizing: border-box;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+
+    .hover-eye {
+        position: relative; 
+        display: flex;
+        justify-content: center;
+
+        .eye {
+            width: 3vw;
+            height: auto;
+            min-width: 30px;
+        }
+    }
+
+    .hover-fullscreen {
         width: 100%;
-        height: 100%; 
-        background-color: rgba(0, 0, 0, 0.5); 
-        display: flex; 
-        padding: 15px; 
-        box-sizing: border-box;
-        align-items: center;
-        flex-direction: column;
+        display: flex;
+        justify-content: flex-end;
+        cursor: pointer;
+
+        .fullscreen {
+            width: 2.3vw;
+            height: auto;
+            min-width: 30px;
+        }
+    }
+
+    .hover-text {
+        color: white; 
+        display: flex;
         justify-content: space-between;
-        opacity: 0;
+        width: 100%;
 
-        .survol-oeil {
-            position: relative; 
-            display: flex;
-            justify-content: center;
-
-            .oeil {
-                width: 3vw;
-                height: auto;
-                min-width: 30px;
-            }
+        p {
+            margin: 0;
+            text-transform: uppercase;
         }
 
-        .survol-fullscreen {
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-            cursor: pointer;
-
-            .fullscreen {
-                width: 2.3vw;
-                height: auto;
-                min-width: 30px;
-            }
-
+        .hover-category {
+            font-family: 'space_mono', sans-serif;
         }
-
-        .survol-texte {
-            color: white; 
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-
-            p {
-                margin: 0;
-                text-transform: uppercase;
-            }
-
-            .survol-categorie {
-                font-family: 'Space Mono', sans-serif;
-            }
-        }
+    }
 }
 
-.photo-survol:hover {
+.photo-hover:hover {
     opacity: 1;
 }
 

@@ -1,24 +1,24 @@
 function initializeLightbox() {
-    const fullscreenImages = document.querySelectorAll('.survol-fullscreen');
+    const fullscreenImages = document.querySelectorAll('.hover-fullscreen');
     const lightbox = document.querySelector('.lightbox');
     const lightboxImage = document.querySelector('.lightbox__container img');
-    const lightboxCategorie = document.querySelector('.lightbox__cat');
+    const lightboxCategory = document.querySelector('.lightbox__cat');
     const lightboxReference = document.querySelector('.lightbox__ref');
     const prevButton = document.querySelector('.lightbox__prev');
     const nextButton = document.querySelector('.lightbox__next');
     let currentImageIndex = 0;
-    let images = [];
+    let images = []; // création d'un tableau vide
 
     fullscreenImages.forEach(function(fullscreenImage, index) {
         const imageURL = fullscreenImage.dataset.image;
-        const imageCategorie = fullscreenImage.dataset.categorie;
+        const imageCategory = fullscreenImage.dataset.category;
         const imageReference = fullscreenImage.dataset.reference;
         const imageID = fullscreenImage.dataset.id;
 
         images.push({
             id: imageID,
             url: imageURL,
-            categorie: imageCategorie,
+            category: imageCategory,
             reference: imageReference
         });
 
@@ -34,7 +34,7 @@ function initializeLightbox() {
         if (index >= 0 && index < images.length) {
             const currentImage = images[index];
             lightboxImage.src = currentImage.url;
-            lightboxCategorie.textContent = currentImage.categorie;
+            lightboxCategory.textContent = currentImage.category;
             lightboxReference.textContent = currentImage.reference;
         } else {
             console.error(index);
@@ -46,12 +46,13 @@ function initializeLightbox() {
         showImage(currentImageIndex);
     }
 
+    nextButton.addEventListener('click', showNextImage);
+
     function showPrevImage() {
         currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
         showImage(currentImageIndex);
     }
 
-    nextButton.addEventListener('click', showNextImage);
     prevButton.addEventListener('click', showPrevImage);
 
     const closeBtn = document.querySelector('.lightbox__close img');

@@ -1,17 +1,17 @@
 <?php 
 
+// Enregistrement des menus dans WP
 register_nav_menus( array(
 	'header' => 'Menu Principal',
 	'footer' => 'Bas de page',
 ) );
 
-add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
-
 function theme_enqueue_styles() {
     wp_enqueue_style( 'theme-style', get_stylesheet_uri() );
     wp_enqueue_style( 'custom-style', get_stylesheet_directory_uri() . '/css/style.css' );
 }
-add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
+
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
 function theme_enqueue_scripts() {
     wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.4.1.min.js', array(), '3.4.1', true);
@@ -26,26 +26,23 @@ function theme_enqueue_scripts() {
     }
 }
 
-add_action('wp_enqueue_scripts', 'add_google_fonts');
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
 
-function add_google_fonts() {
-    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap', array(), null);
-}
-
+// Ajout de la mention légale "tous droits réservés"
 function custom_footer_menu_items($items, $args) {
     if ($args->theme_location == 'footer') {
         $items .= '<li>Tous droits réservés</li>';
     }
     return $items;
 }
-// Ajouter la fonction de personnalisation des éléments de menu au filtre wp_nav_menu_items
+
 add_filter('wp_nav_menu_items', 'custom_footer_menu_items', 10, 2);
 
-
+// Requete pour affichage des images dans le catalogue
 function filter_posts() {
-    $filtreFormat = $_POST['formats'];
-    $filtreCategories = $_POST['categories'];
-    $filtreOrder = $_POST['filtreOrder'];
+    $filterFormat = $_POST['formats'];
+    $filterCategories = $_POST['categories'];
+    $filterOrder = $_POST['filtreOrder'];
     $posts_per_page = $_POST['posts_per_page'];
 
 
@@ -53,7 +50,7 @@ function filter_posts() {
         $args = array(
             'post_type' => 'image', 
             'posts_per_page' => $posts_per_page, 
-            'orderby' => 'title'
+            'orderby' => 'date'
         );
 
         if (!empty($filtreCategories)) {
@@ -82,7 +79,7 @@ function filter_posts() {
         }
 
         else {
-            $args['orderby'] = 'title';
+            $args['orderby'] = 'date';
         }
 
     ob_start ();    

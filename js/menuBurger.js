@@ -5,30 +5,29 @@ document.addEventListener("DOMContentLoaded", function () {
  
     menuToggle.addEventListener('click', function () {
         if (mainMenu.classList.contains('menu-popin')) {
-            // Si la classe menu-popin est présente, on la retire pour cacher le menu
             mainMenu.classList.remove('menu-popin');
             mainMenu.style.display = 'none';
             menuToggle.classList.toggle('open'); // retire la classe si celle ci existe deja 
         } else {
-            // Sinon, on ajoute la classe pour afficher le menu avec une animation
             mainMenu.style.display = 'flex';
             setTimeout(() => { // ajoute un delai avant de lancer l'animation de 10ms
                 mainMenu.classList.add('menu-popin');
-                menuToggle.classList.toggle('open');  // ajoute la classe si celle ci n'existe pas deja 
+                menuToggle.classList.toggle('open'); 
             }, 10);
         }
     });
     
-    // on cache le menu-list lors du clic sur un lien
+    // Cache du menu-list lors du clic sur un lien quand on est en mobile
     const mainMenus = mainMenu.querySelectorAll('a');
-    mainMenus.forEach(link => {
-        link.addEventListener('click', function () {
-            mainMenu.classList.remove('menu-popin'); 
-            mainMenu.style.display = 'none';
-            menuToggle.classList.toggle('open'); 
+   if (window.innerWidth < 700) {
+        mainMenus.forEach(link => {
+            link.addEventListener('click', function () {
+                mainMenu.classList.remove('menu-popin'); 
+                mainMenu.style.display = 'none';
+                menuToggle.classList.toggle('open'); 
+            });
         });
-    }); 
-    
+    }
  });
 
  

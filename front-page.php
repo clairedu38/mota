@@ -1,6 +1,5 @@
 <?php 
 get_header(); 
-$imageaccueil = get_field('image_daccueil');
 ?>
 
 <section class="banner-home">
@@ -9,6 +8,13 @@ $imageaccueil = get_field('image_daccueil');
         'post_type' => 'image',
         'posts_per_page' => 1, 
         'orderby' => 'rand',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'formatimg',
+                'field' => 'slug',
+                'terms' => 'paysage' 
+            )
+        )
     );
 
     $query = new WP_Query($args);
@@ -29,36 +35,24 @@ $imageaccueil = get_field('image_daccueil');
 
 </section>
 
-<section class="catalogue-photos">
+<section class="catalog-photos">
 
-    <form  class="filtres" action="" method="post">
-
-    <?php 
-    //$filtreCategories = $_POST['category-filter']; 
-    // $filtreFormat = $_POST['format-filter']; 
-    // $filtreOrders = $_POST['orderby']; 
-    // var_dump($filtreOrder);
-    // var_dump($filtreFormat);
-    // var_dump($filtreCategories); 
-    ?>
-    
-        <div class="filtres-taxonomy">
-            <!-- filtre CATEGORIE -->
+    <div class="filters">   
+        <div class="filters-taxonomy">
+            <!-- FILTRE CATEGORIE -->
             <?php 
-            $categories = get_terms('categorie'); // récupération des catégories
-
-            //print_r($categories); ?>
+            $categories = get_terms('categorie'); // récupération des catégories via ACF ?>
             
             <div class="filter" id="category-filter">
                 <div class="filter-selected">
-                    <div class="option-selected" id="category-selected">Catégories</div>
-                    <img class="show-more" id="show-category" src="<?= get_template_directory_uri(); ?>/assets/images/chevron-down-s.png" alt="chevron pour choisir catégory" />
+                    <div class="option-selected">Catégories</div>
+                    <img class="show-more" src="<?= get_template_directory_uri(); ?>/assets/images/chevron-down-s.png" alt="chevron pour choisir catégory" />
                 </div>
                 <div class="filter-options">
                     <div class="option all-option">Catégories</div>
                 <?php 
                     foreach ($categories as $category) { ?>
-                        <div class="option category-option" id="category-<?php echo $category->slug; ?>">
+                        <div class="option">
                         <?php echo $category->name; ?> 
                     </div>
                     <?php 
@@ -66,20 +60,20 @@ $imageaccueil = get_field('image_daccueil');
                 </div>
             </div>
 
-            <!-- filtre FORMAT -->
+            <!-- FILTRE FORMAT -->
             <?php
-            $formats = get_terms('formatimg'); // récupération des catégories
-            //  print_r($formats); ?>
+            $formats = get_terms('formatimg'); // récupération des formats via ACF 
+             ?>
             <div class="filter" id="format-filter">
                 <div class="filter-selected">
-                    <div class="option-selected" id="format-selected">Formats</div>
-                    <img class="show-more" id="show-format" src="<?= get_template_directory_uri(); ?>/assets/images/chevron-down-s.png" alt="chevron pour choisir catégory" />
+                    <div class="option-selected">Formats</div>
+                    <img class="show-more" src="<?= get_template_directory_uri(); ?>/assets/images/chevron-down-s.png" alt="chevron pour choisir catégory" />
                 </div>
                 <div class="filter-options">
                 <div class="option all-option">Formats</div>
                 <?php 
                     foreach ($formats as $format) { ?>
-                        <div class="option format-option" id="format-<?php echo $format->slug; ?>">
+                        <div class="option">
                         <?php echo $format->name; ?> 
                     </div>
                     <?php 
@@ -88,11 +82,12 @@ $imageaccueil = get_field('image_daccueil');
             </div>
         </div>
     
-        <div class="filtre-tri">
+        <!-- TRI DATE -->
+        <div class="filter-tri">
             <div class="filter" id="orderby">
                 <div class="filter-selected">
-                    <div class="option-selected" id="order-selected">Trier par</div>
-                    <img class="show-more" id="show-order" src="<?= get_template_directory_uri(); ?>/assets/images/chevron-down-s.png" alt="chevron pour choisir catégory" />
+                    <div class="option-selected">Trier par</div>
+                    <img class="show-more" src="<?= get_template_directory_uri(); ?>/assets/images/chevron-down-s.png" alt="chevron pour choisir catégory" />
                 </div>
                 <div class="filter-options">
                     <div class="option all-option">Trier par</div>
@@ -101,8 +96,9 @@ $imageaccueil = get_field('image_daccueil');
                 </div>
             </div>   
         </div>      
-    </form>
-    <div class="catalogue catalogue-front"></div>
+    </div>
+    
+    <div class="catalog catalog-front"></div>
 
     <div class="more">
         <div class="btn-submit load-more">Charger plus</div>

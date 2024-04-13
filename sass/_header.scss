@@ -10,7 +10,6 @@ header {
   background: white;
   width: 100%;
 
-
   .logo-header {
     height: 80px;
     display: flex;
@@ -24,27 +23,21 @@ header {
   }
 
   #main-menu {
-    margin-right: 5%;
-
-  
+    margin-right: 5%;  
   }
 
   .header-menu {
     display: flex;
     
-
     li {
       list-style-type: none;
       padding-left: 45px;
     }
-
   }
 
   .menu-toggle {
     display: none;
-  }
-
-  
+  } 
 }
 
 @media (max-width: $breakpoint__large_phone) {
@@ -74,16 +67,14 @@ header {
       align-items: center;
       opacity: 0;
 
-
         &.menu-popin {
           opacity: 1;
-          transition: opacity 0.5s;
+          transition: opacity 0.5s ease-in-out;
         }
       
-
       .header-menu {
         flex-direction: column;
-        gap: 18px;
+        gap: 40px;
         padding: 0;
         align-items: center;
 
