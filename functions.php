@@ -45,37 +45,35 @@ function filter_posts() {
     $filterOrder = $_POST['filtreOrder'];
     $posts_per_page = $_POST['posts_per_page'];
 
-
-
         $args = array(
             'post_type' => 'image', 
             'posts_per_page' => $posts_per_page, 
             'orderby' => 'date'
         );
 
-        if (!empty($filtreCategories)) {
+        if (!empty($filterCategories)) {
             $args['tax_query'][] = array(
                 'taxonomy' => 'categorie',
                 'field' => 'slug',
-                'terms' => $filtreCategories,
+                'terms' => $filterCategories,
             );
         }
 
-        if (!empty($filtreFormat)) {
+        if (!empty($filterFormat)) {
             $args['tax_query'][] = array(
                 'taxonomy' => 'formatimg',
                 'field' => 'slug',
-                'terms' => $filtreFormat,
+                'terms' => $filterFormat,
             );
         }
 
-        if (!empty($filtreCategories) && !empty($filtreFormat)) {
+        if (!empty($filterCategories) && !empty($filterFormat)) {
             $args['tax_query']['relation'] = 'AND';
         }
 
 
-        if (!empty($filtreOrder)) {
-            $args['order'] = $filtreOrder;
+        if (!empty($filterOrder)) {
+            $args['order'] = $filterOrder;
         }
 
         else {

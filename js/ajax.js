@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Gestion du chargement supplémentaire
     const loadMoreBtn = document.querySelector('.load-more');
     loadMoreBtn.addEventListener('click', load_more);
+
 });
 
 // Fonction pour ajouter des écouteurs d'événements sur les filtres
@@ -32,6 +33,7 @@ function addFilterListeners() {
 // Fonction pour gérer le clic sur les filtres
 function handleFilterClick() {
     const options = this.nextElementSibling;
+    const isOpen = options.style.display === 'flex';
 
     const allFilters = document.querySelectorAll('.filter-selected');
     allFilters.forEach(function(filter) {
@@ -45,7 +47,7 @@ function handleFilterClick() {
         }
     });
 
-    if (!options.style.display === 'flex') {
+    if (!isOpen) {
         options.style.display = 'flex';
         this.classList.add('clicked');
 
@@ -60,6 +62,11 @@ function handleOptionClick() {
     const filterOptions = document.querySelectorAll('.filter-options');
     filterOptions.forEach(function(option) {
         option.style.display = 'none';
+    });
+
+    const allFilterSelectedOptions = document.querySelectorAll('.filter-selected');
+    allFilterSelectedOptions.forEach(function(selectedOption) {
+        selectedOption.classList.remove('clicked');
     });
 
     const selectedOption = this.textContent;
@@ -124,6 +131,7 @@ function load_ajax(postsPerPage) {
         catalogue.innerHTML = body;
         initializeLightbox();
     });
+
 }
 
 // Fonction pour charger plus d'images
