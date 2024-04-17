@@ -40,6 +40,10 @@ header {
   } 
 }
 
+.close-menu {
+  display: flex;
+}
+
 @media (max-width: $breakpoint__large_phone) {
   header {
     position: absolute;
@@ -149,6 +153,10 @@ header {
         }
       }
     }
+  }
+
+  .close-menu {
+    display: none!important;
   }
 }
 

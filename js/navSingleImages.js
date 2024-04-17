@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function() {
     var nextLink = document.getElementById('next-link');
     var nextPhoto = document.querySelector('.next-photo');
 
+    initializeLightbox();
+
     previousLink.addEventListener('mouseover', function() {
         previousPhoto.style.display = 'flex';
     });

@@ -104,6 +104,8 @@ get_header();
         <div class="btn-submit load-more">Charger plus</div>
     </div>
 
+    
 </section>
+
 
 <?php get_footer(); ?>

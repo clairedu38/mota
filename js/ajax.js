@@ -1,9 +1,8 @@
-const urlAjax = 'http://localhost/mota/wp-admin/admin-ajax.php';
 let numberPostInit = 8;
 
 let filterOrderChoice = ""; 
 let filterFormatChoice = ""; 
-let filterCategoryChoice = ""; 
+let filterCategoryChoice = "";
 
 document.addEventListener("DOMContentLoaded", function() {
     // Gestion des filtres
@@ -114,10 +113,11 @@ function load_ajax(postsPerPage) {
         'formats': format,
         'categories': category,
         'filtreOrder': order,
-        'posts_per_page': postsPerPage
+        'posts_per_page': postsPerPage,
+        'ajax_nonce' : ajax_object.nonce
     }
 
-    fetch(urlAjax, {
+    fetch(ajax_object.ajax_url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

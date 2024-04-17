@@ -20,7 +20,13 @@ function theme_enqueue_scripts() {
     wp_enqueue_script( 'lightbox-script', get_stylesheet_directory_uri() . '/js/lightbox.js', array(), null, true );
     if ( is_front_page() ) {
         wp_enqueue_script( 'ajax-script', get_stylesheet_directory_uri() . '/js/ajax.js', array(), null, true );
-    }    
+        wp_localize_script('ajax-script', 'ajax_object', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce'    => wp_create_nonce('filter_photos_nonce')
+        ));
+    } else   {
+        wp_enqueue_script( 'otherpage-script', get_stylesheet_directory_uri() . '/js/otherpage.js', array(), null, true );
+    }
     if ( is_single() ) {
         wp_enqueue_script( 'images-script', get_stylesheet_directory_uri() . '/js/navSingleImages.js', array(), null, true );
     }
@@ -40,6 +46,12 @@ add_filter('wp_nav_menu_items', 'custom_footer_menu_items', 10, 2);
 
 // Requete pour affichage des images dans le catalogue
 function filter_posts() {
+
+    // ajax securité
+    if ( ! isset( $_POST['ajax_nonce'] ) || ! wp_verify_nonce( $_POST['ajax_nonce'], 'filter_photos_nonce' ) ) {
+        die( 'Security check failed' );
+    }
+
     $filterFormat = $_POST['formats'];
     $filterCategories = $_POST['categories'];
     $filterOrder = $_POST['filtreOrder'];

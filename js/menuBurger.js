@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(() => { // ajoute un delai avant de lancer l'animation de 10ms
                 mainMenu.classList.add('menu-popin');
                 menuToggle.classList.toggle('open'); 
+                mainMenu.classList.remove('close-menu'); 
             }, 10);
         }
     });
@@ -23,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         mainMenus.forEach(link => {
             link.addEventListener('click', function () {
                 mainMenu.classList.remove('menu-popin'); 
-                mainMenu.style.display = 'none';
+                mainMenu.classList.add('close-menu');
                 menuToggle.classList.toggle('open'); 
             });
         });

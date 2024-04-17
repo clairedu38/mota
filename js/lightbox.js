@@ -31,18 +31,14 @@ function initializeLightbox() {
     });
 
     function showImage(index) {
-        if (index >= 0 && index < images.length) {
-            const currentImage = images[index];
-            lightboxImage.src = currentImage.url;
+        const currentImage = images[index];
             lightboxCategory.textContent = currentImage.category;
-            lightboxReference.textContent = currentImage.reference;
-        } else {
-            console.error(index);
-        }
+            lightboxReference.textContent = currentImage.reference; 
+            lightboxImage.src = currentImage.url;
     }
 
     function showNextImage() {
-        currentImageIndex = (currentImageIndex + 1) % images.length;
+        currentImageIndex = (currentImageIndex + 1) % images.length; //utilisation du modulo pour créer une boucle
         showImage(currentImageIndex);
     }
 
@@ -62,6 +58,3 @@ function initializeLightbox() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    initializeLightbox();
-});
